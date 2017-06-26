@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_row1"
+    android:orientation="vertical" android:padding="4dip"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="3">
+            <com.facebook.share.widget.ShareButton
+                android:id="@+id/shareButton"
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="5dp"
+                android:textSize="30sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:textColor="@color/text"
+                android:layout_width="0px"
+                android:id="@+id/allCalories"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@color/square2"
+                android:layout_margin="5dp"
+                android:text="0.0 km/h"
+                android:textSize="30sp"
+                android:gravity="center"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0px"
+            android:layout_weight="2">
+
+        </LinearLayout>
+
+    </LinearLayout>

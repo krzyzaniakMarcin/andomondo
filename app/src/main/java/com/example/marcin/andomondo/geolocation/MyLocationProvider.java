@@ -11,9 +11,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.example.marcin.andomondo.Main;
 
 /**
  * Created by Marcin on 5/12/2017.
@@ -26,9 +24,9 @@ public class MyLocationProvider {
     LocationManager locationManager;
     LocationListener locationListener;
 
-    public MyLocationProvider(final Context context, final Activity activity) {
-        this.context = context;
-        this.activity = activity;
+    public MyLocationProvider() {
+        context = Main.context;
+        activity = Main.activity;
         locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         locationListener = new LocationListener() {
 
@@ -37,10 +35,7 @@ public class MyLocationProvider {
             @Override
             public void onLocationChanged(Location location) {
                 if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED )
-                        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-                    if(ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-                        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 1);
+                    ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
                 }
 
                 location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -63,7 +58,7 @@ public class MyLocationProvider {
             }
         };
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 1, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3, 10, locationListener);
 
     }
 }
